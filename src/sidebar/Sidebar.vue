@@ -1,23 +1,27 @@
 <script setup lang="ts">
-import { storageDemo } from '~/logic/storage'
+import Tabs from './Tabs.vue'
 
-function openOptionsPage() {
-  browser.runtime.openOptionsPage()
-}
+// export default {
+//   data: {
+//     tabs ["extension://introduction.html", "https://zequez.notion.site/Gameworld-Browser-9be11d611739497dab53e1dfbcb069fd", "https://github.com/Zequez/gameworld-browser"]
+//   },
+//   mounted() {
+//     console.log("Component mounted");
+//   }
+// }
+
 </script>
 
 <template>
-  <main class="w-[300px] px-4 py-5 text-center text-gray-700">
-    <Logo />
-    <div>Popup</div>
-    <p class="mt-2 opacity-50">
-      This is the popup page
-    </p>
-    <button class="btn mt-2" @click="openOptionsPage">
-      Open Options
-    </button>
-    <div class="mt-2">
-      <span class="opacity-50">Storage:</span> {{ storageDemo }}
+  <main class="text-center text-gray-700">
+    <div class="aspect-h-0.62">
+      <img src="/assets/banners/gameworld-browser.png" class="w-full " />
     </div>
+    <Suspense>
+      <Tabs />
+      <template #fallback>
+        Loading...
+      </template>
+    </Suspense>
   </main>
 </template>
